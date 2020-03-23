@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./principal.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="contexto">
+        <h:form id="form_pesquisa" >
+            <h:panelGroup rendered="#{produtoC.mostra_toolbar}">
+                <p:toolbar class="toolbar_pesquisa">
+                    <f:facet name="left">
+                        <p:commandButton value="Pesquisar" update="tabela"
+                                         action="#{produtoC.pesquisarProduto()}"/>
+
+                        <p:commandButton value="Novo" 
+                                         update="@form"
+                                         actionListener="#{produtoC.novo()}" />
+
+                    </f:facet>
+                </p:toolbar>
+
+                <h:panelGrid id="painel_pesquisa" columns="3" >
+                    <p:outputLabel value="Produto:" />
+                    <p:inputText id="produto" value="#{produtoC.produto.nome}" />
+                </h:panelGrid>
+
+                <p:dataTable id="tabela" var="produto" 
+                             value="#{produtoC.produtos}" rows="10"
+                             paginator="true"
+                             emptyMessage="Nenhum produto..."
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Produto">
+                        <h:outputText value="#{produto.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Preço">
+                        <h:outputText value="#{produto.preco}" />
+                    </p:column>
+
+                    <p:column headerText="Estoque">
+                        <h:outputText value="#{produto.estoque}" />
+                    </p:column>
+
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{produto.descricao}" />
+                    </p:column>
+
+                    <p:column headerText="Ação">
+                        <p:commandButton icon="ui-icon-pencil" title="Alterar"
+                                         action="#{produtoC.carregaProduto()}" >
+                            <f:setPropertyActionListener value="#{produto}"
+                                                         target="#{produtoC.produto}" />
+                        </p:commandButton>
+
+                        <p:commandButton icon="ui-icon-trash" title="Excluir"
+                                         update="msg_principal tabela"
+                                         actionListener="#{produtoC.excluir()}" >
+                            <p:confirm header="Confirmação" message="Deseja Excluir?"
+                                       icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
+                    </p:column>
+
+
+                </p:dataTable>
+
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                </p:confirmDialog>
+            </h:panelGroup>
+
+
+            <!--ínicio parte do codigo para salvar e alterar-->
+            <h:panelGroup rendered="#{!produtoC.mostra_toolbar}">
+                <p:toolbar class="toolbar_pesquisa" >
+                    <f:facet name="left">
+                        <p:commandButton value="Salvar" update="@form msg_principal" 
+                                            action="#{produtoC.salvar()}" />
+
+                        <p:commandButton value="Voltar"
+                                         update="@form msg_principal" immediate="true"
+                                         actionListener="#{produtoC.novo()}"/>
+
+                    </f:facet>
+                </p:toolbar>
+
+                <h:panelGrid id="painel" columns="2">
+                    <p:outputLabel value="Produto:" /> 
+                    <p:inputText id="nome" value="#{produtoC.produto.nome}"
+                                 required="true" 
+                                 requiredMessage="Nome é obrigatório" />
+
+                    <p:outputLabel value="Preço:" /> 
+                    <p:inputText id="preco"  required="true" 
+                                 value="#{produtoC.produto.preco}"
+                                 requiredMessage="Preço é obrigatório" />
+
+                    <p:outputLabel value="Estoque:" /> 
+                    <p:inputText id="estoque"  required="true"
+                                 value="#{produtoC.produto.estoque}"
+                                 requiredMessage="Estoque é obrigatório" />
+
+                    <p:outputLabel value="Descrição:" />
+                    <p:inputTextarea id="descricao" value="#{produtoC.produto.descricao}" />
+
+                    <h:outputText />
+
+                </h:panelGrid>
+            </h:panelGroup>
+
+
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

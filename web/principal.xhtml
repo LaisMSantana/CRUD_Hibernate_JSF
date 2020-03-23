@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Principal</title>
+        <h:outputStylesheet library="css" name="estilo.css" />
+        <h:outputScript library="js" name="calendario.js" />
+    </h:head>
+    <h:body>
+        <div id="principal">
+            <div id="topo">
+                <h:graphicImage library="imagem" name="banner.jpg" />
+            </div>
+
+            <div id="menu">
+                <h1>Menu</h1>
+                <p:link outcome="principal" value="Home" />
+                <p:link outcome="produto" value="Produto" />
+                
+                <p:link outcome="novoCliente" value="Novo Cliente" />
+            </div>
+
+            <!--inicio da parte editavel formulários-->
+            <div id="contexto">
+
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false"
+                          resizable="false" showHeader="false">
+                    <p:graphicImage name="carregando.gif" library="imagem" />
+                </p:dialog>
+
+                <p:messages id="msg_principal" showDetail="true" />
+                <ui:insert name="contexto">
+                    <h:graphicImage id="img_contexto" 
+                                    library="imagem"
+                                    name="java-contexto.jpg" />
+                </ui:insert>
+            </div>
+            <!--fim da parte editavel formulários-->
+
+            <div id="rodape"></div>
+        </div>
+    </h:body>
+</html>
+

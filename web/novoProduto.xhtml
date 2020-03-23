@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./principal.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="contexto">
+        <h1>Produto</h1>
+        <h:form id="novoProduto">
+            <h:messages id="mens" showDetail="true"  />
+            
+            <h:panelGrid id="panel_novoProduto" columns="3" >
+                <h:outputLabel value="Produto:" /> 
+                <h:inputText id="nome" value="#{produtoC.produto.nome}"
+                             required="true" 
+                             requiredMessage="Nome é obrigatório" />
+                <h:message for="nome" />
+
+                <h:outputLabel value="Preço:" /> 
+                <h:inputText id="preco"  required="true" 
+                             value="#{produtoC.produto.preco}"
+                             requiredMessage="Preço é obrigatório" />
+                <h:message for="preco" />
+                
+                <h:outputLabel value="Estoque:" /> 
+                <h:inputText id="estoque"  required="true"
+                             value="#{produtoC.produto.estoque}"
+                             requiredMessage="Estoque é obrigatório" />
+                <h:message for="estoque" />
+                
+                <h:outputLabel value="Descrição:" />
+                <h:inputTextarea id="descricao" value="#{produtoC.produto.descricao}" />
+                <h:outputLabel />
+                
+                <h:outputText />
+                <h:commandButton value="Salvar" action="#{produtoC.salvar()}" />
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

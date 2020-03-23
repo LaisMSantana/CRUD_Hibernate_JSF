@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#principal{
+    width: 1000px;
+    height: auto;
+    margin: auto;
+    border: 2px solid #000;
+}
+
+#topo{
+    height: 100px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 25px;
+    padding-bottom: 25px; 
+}
+
+#menu{
+    float: left;
+    width: 250px;
+    
+}
+
+#menu ul{
+    list-style: none;
+    font-size: 20px;
+    margin: 20px;
+}
+
+#menu a{
+    text-decoration: none;
+    padding-bottom: 7px;
+    display: block;
+    
+}
+
+#contexto{
+    float: right;
+    width: 750px;
+    height: 100%;   
+    border-left: 2px solid #000;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+
+fieldset{
+    height: 90%;
+    width: 90%;
+    margin: 0 25px 30px;
+    padding-bottom: 20px;
+}
+
+#descricao{
+    margin-top: 10px;
+}
+
+label{
+    margin: 10px 10px 0px;
+    display: inline-block;
+    width: 60px;
+}
+
+textArea{
+    width: 280px;
+    height: 80px;
+}
+
+#botao{
+    margin: 10px 0 15px 84px;
+}
+
+.botao{
+   height: 25px;
+   width: 80px;
+   margin-right: 10px;
+}
+
+#img_contexto{
+    display: block;
+    margin: 100px auto;
+}
+
+#rodape{
+    height: 50px;
+    background: #000;
+    clear: both;
+}
+
+table{
+    margin-left: 25px;
+    margin-bottom: 25px;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.toolbar_pesquisa{
+    margin-bottom: 15px;
+}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
